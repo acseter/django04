@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{% block title %}
+我的网站
+{% endblock %}
+{#</head>#}
+{#<body>#}
+{#<a href="{% url 'home' %}"><h1>个人博客</h1></a>#}
+{% block nav_home_activate %}active{% endblock %}
+{% block content %}
+<p>一共有{{page_of_blogs.paginator.count}}篇文章</p>{{ blog_count }}
+     {% for blog in page_of_blogs.object_list %}
+{#    {% for blog in blogs %}#}
+        <a href="{% url 'blog_detail' blog.pk %}">
+        <h2>{{ blog.title }}</h2></a>
+        <hr>发表日期：{{ blog.create_time|date:'Y-m-d H.m.s' }}&nbsp;阅读量（{{ blog.readed_num }}）
+        <p>{{ blog.content|striptags|truncatechars:30 }}</p>
+
+
+
+
+
+        {% empty %}
+        <p>暂无博客，敬请期待</p>
+    {% endfor %}
+  <ul class="pagination">
+            <li>
+                {% if page_of_blogs.has_previous %}
+                    <a href="?page=previous_page_number" aria-label="Previous">
+                 <span aria-hidden="true">&laquo;</span>
+              </a>
+                {% else %}
+                    <span aria-hidden="true">&laquo;</span>
+                {% endif %}
+
+            </li>
+      {% for page_num in page_of_blogs.paginator.page_range %}
+          {% if page_num == page_of_blogs.number %}
+            <li class = 'active'><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+          {% else %}
+                <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+          {% endif %}
+
+                  {% endfor %}
+            <li>
+                       {% if page_of_blogs.has_next%}
+                    <a href="?page={{ page_of_blogs.next_page_number }}" aria-label="Previous">
+                 <span aria-hidden="true">&raquo;</span>
+              </a>
+                {% else %}
+                    <span aria-hidden="true">&raquo;</span>
+                {% endif %}
+
+
+              </a>
+            </li>
+          </ul>
+
+{% endblock %}
+
+
+{##}
+{#</body>#}
+{#</html>#}

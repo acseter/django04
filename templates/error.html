@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{% block title %}
+错误
+{% endblock %}
+{#</head>#}
+{#<body>#}
+{#<a href="{% url 'home' %}"><h1>个人博客</h1></a>#}
+{% block nav_home_activate %}active{% endblock %}
+{% block content %}
+{{ message }}
+{% endblock %}
