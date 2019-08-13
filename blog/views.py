@@ -7,7 +7,7 @@ from .models import Blog, BlogType
 def blog_list(request):
 
     blog_all_list = Blog.objects.all()
-    paginator = Paginator(blog_all_list,2)
+    paginator = Paginator(blog_all_list,4)
     page_num = request.GET.get('page',1)
     page_of_blogs = paginator.get_page(page_num)
     context = {}
