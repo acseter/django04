@@ -25,6 +25,10 @@
     }
 
 </style>
+    <link href="{% static 'bootstrap/css/base.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/index.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/info.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/m.css' %}" rel="stylesheet">
    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
@@ -32,6 +36,7 @@
 {% block header_extends %}{% endblock %}
 </head>
 <body>
+
     <div class="navbar navbar-default"role="navigation">
         <div class="contain-fluid">
             <div class="navbar-header">
@@ -63,6 +68,6 @@
 
 
 {% block content %}{% endblock %}
-
+</div>
 </body>
 </html>

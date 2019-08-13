@@ -30,3 +30,12 @@ class Blog(models.Model):
     class Meta:
         ordering = ['-create_time']     #ordering标签排序设置，按照创建时间排序
 
+class MediaTest(models.Model):
+    picture_url = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='image',
+        max_length=200)
+
+    class Meta:
+        db_table = 'media_test'

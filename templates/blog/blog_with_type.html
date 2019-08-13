@@ -10,6 +10,7 @@
 {#</head>#}
 {#<body>#}
 {% block content %}
+    <div class="col-sm-8 col-md-8">
 <h2>{{ blog_type.type_name }}</h2>
 {#<a href="{% url 'home' %}"><h1>个人博客</h1></a>#}
 <p>一共有{{ blogs|length }}篇文章</p>{{ blog_count }}
@@ -21,6 +22,28 @@
         {% empty %}
         <p>暂无博客，敬请期待</p>
    {% endfor %}
+    </div>
+     <div class="col-sm-4 col-md-3">
+<div class="panel panel-default">
+  <div class="panel-heading"> <h4>博客分类</h4></div>
+  <div class="panel-body">
+    <ul>
+              {% for blog_type in blog_types %}
+             <li><a href="{% url 'blog_with_type' blog_type.pk %}">{{ blog_type.type_name }}</a>
+
+
+
+
+        {% empty %}
+        <p>暂无分类，敬请期待</p>
+            {% endfor %}
+         </ul>
+
+  </div>
+</div>
+
+
+</div>
 {% endblock %}
 {#    {#}
 {##}
